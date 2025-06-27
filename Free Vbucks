@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Jumpscare Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #jumpscare {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+
+    #jumpscare img {
+      max-width: 1000%;
+      max-height: 1000%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Klicke irgendwo oder warte ab...</h1>
+
+  <!-- Jumpscare Element -->
+  <div id="jumpscare">
+    <img src="sound-und-bilder/jumpscare.jpg" alt="Jumpscare Bild">
+  </div>
+
+  <audio id="scream" src="sound-und-bilder/scream.mp3"></audio>
+
+  <script>
+    function triggerJumpscare() {
+      const scareDiv = document.getElementById('jumpscare');
+      const scream = document.getElementById('scream');
+
+      scareDiv.style.display = 'flex';
+      scream.play();
+    }
+
+    // Entweder nach 5 Sekunden automatisch
+    setTimeout(triggerJumpscare, 5000);
+
+    // Oder bei einem Klick auf den Bildschirm
+    document.body.addEventListener('click', triggerJumpscare);
+  </script>
+
+</body>
+</html>
